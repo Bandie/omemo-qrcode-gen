@@ -6,16 +6,17 @@ QR_TEXT="Type \"qr\" for displaying the QR code on your command line only.\n"
 STDOUT_TEXT="Type \"stdout\" to just put the string into stdout.\n"
 
 function helpme() {
-  echo "$0 [ Jabber ID ] [ Device ID ] [ Fingerprint ] [ [ Filename ] | [ qr ] | [ stdout ] ]"
+  echo "$0 [ Jabber ID ] [ Device ID ] [ Fingerprint ] [ [ Filename.png ] | [ qr ] | [ stdout ] ]"
   echo "You can use $0 without any arguments or put all the needed arguments in here. Don't forget the quotation marks. ;)"
   echo "Requires qrencode and/or qr or even nothing."
   echo -e "\nExample:"
+  echo -e "# $0 [ Jabber ID ] [ Device ID ] \"[ Fingerprint ]\" [ filename.png or \"qr\" or \"stdout\" ] "
   echo "# This will use qr to generate the QR code."
-  echo -e "$0 john@example.com 12345678 \"90123456 ABCDEF12 12345689 F0000000\" qr"
-  echo "# This will use qrencode to generate the QR code."
-  echo -e "$0 john@example.com 12345678 \"90123456 ABCDEF12 12345689 F0000000\" foo.png"
+  echo -e "$0 bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" qr"
+  echo "# This will use qrencode to generate the QR code and will save it into foo.png"
+  echo -e "$0 bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" foo.png"
   echo "# This will put the string into stdout"
-  echo -e "$0 john@example.com 12345678 \"90123456 ABCDEF12 12345689 F0000000\" stdout"
+  echo -e "$0 bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" stdout"
 }
 
 function gen() {
