@@ -1,0 +1,97 @@
+#!/bin/bash
+# Author: Bandie <bandie@chaospott.de>
+# License: GPL-3
+
+QR_TEXT="Type \"qr\" for displaying the QR code on your command line only.\n"
+STDOUT_TEXT="Type \"stdout\" to just put the string into stdout.\n"
+
+function helpme() {
+  echo "$0 [ Jabber ID ] [ Device ID ] [ Fingerprint ] [ [ Filename ] | [ qr ] | [ stdout ] ]"
+  echo "You can use $0 without any arguments or put all the needed arguments in here. Don't forget the quotation marks. ;)"
+  echo "Requires qrencode and/or qr or even nothing."
+  echo -e "\nExample:"
+  echo "# This will use qr to generate the QR code."
+  echo -e "$0 john@example.com 12345678 \"90123456 ABCDEF12 12345689 F0000000\" qr"
+  echo "# This will use qrencode to generate the QR code."
+  echo -e "$0 john@example.com 12345678 \"90123456 ABCDEF12 12345689 F0000000\" foo.png"
+  echo "# This will put the string into stdout"
+  echo -e "$0 john@example.com 12345678 \"90123456 ABCDEF12 12345689 F0000000\" stdout"
+}
+
+function gen() {
+
+  if [[ "$3" =~ [G-Zg-z] ]]; then
+    echo "$0: Error: This is not a valid fingerprint."
+    exit 1
+  fi
+
+  FP=$(echo "$3" | sed 's/ //g' | tr '[:upper:]' '[:lower:]')
+  OMEMOSTR="xmpp:$1?omemo-sid-$2=$FP"
+
+  if [ -n "$QR" ]; then
+    if [ "$4" = "qr" ]; then
+      echo "$OMEMOSTR" | $QR
+      exit 0
+    fi
+  fi
+  if [ "$4" = "stdout" ]; then
+    echo "$OMEMOSTR"
+    exit 0
+  fi
+  if [ -n "$QRENCODE" ]; then
+    echo "$OMEMOSTR" | $QRENCODE -s 5 -o "$4"
+    exit 0
+  fi
+  
+}
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+  helpme
+  exit 0
+fi
+
+export QR=$(which qr)
+export QRENCODE=$(which qrencode)
+
+if [ -z "$1" ]; then
+
+  if [ -n "$QRENCODE" ]; then
+    echo -en "Enter a filename.\n" 
+  fi
+
+  if [ -n "$QR" ]; then
+    echo -en "$QR_TEXT"
+  fi
+
+  echo -en "$STDOUT_TEXT"
+
+  if [ -n "$QRENCODE" ]; then
+    echo -en "(output.png)"
+  fi
+  
+  echo -en ": "
+  read file
+
+  if [ -z "$file" ]; then
+    file="output.png"
+  fi
+
+
+  read -p "Enter your Jabber-ID (JID): " jid
+  read -p "Enter your device ID: " did
+
+  IFS="$(echo -e "\n")"
+  read -p "Enter your fingerprint of this device: " fp
+
+  gen "$jid" "$did" "$fp" "$file"
+  exit 0
+
+else 
+  if [ -n "$2" ] && [ -n "$3" ] && [ -n "$4" ]; then
+    gen "$1" "$2" "$3" "$4"
+    exit 0
+  else
+    echo -e "$0: Error. To few arguments.\nTry running \"$0 --help\""
+    exit 1
+  fi
+fi
