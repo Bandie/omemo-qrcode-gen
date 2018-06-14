@@ -7,7 +7,8 @@ STDOUT_TEXT="Type \"stdout\" to just put the string into stdout.\n"
 
 function helpme() {
   echo "$0 [ Jabber ID ] [ Device ID ] [ Fingerprint ] [ [ Filename.png ] | [ qr ] | [ stdout ] ]"
-  echo "You can use $0 without any arguments or put all the needed arguments in here. Don't forget the quotation marks. ;)"
+  echo "You can use $0 without any arguments or put all the needed arguments in here."
+  echo "Don't forget the quotation marks. ;)"
   echo "Requires qrencode and/or qr or even nothing."
   echo -e "\nExample:"
   echo -e "# $0 [ Jabber ID ] [ Device ID ] \"[ Fingerprint ]\" [ filename.png or \"qr\" or \"stdout\" ] "
