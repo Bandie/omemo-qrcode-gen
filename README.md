@@ -20,3 +20,11 @@ Example:
 # This will put the string into stdout
 ./omemo-qrcode-gen bandie@example.com 9876543210 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 stdout
 ```
+
+If you don't see your device ID's you can use `omemo-gen-get-devicelist-of` to copy paste it into an XMPP console.
+
+it will be like
+
+```console
+# ./omemo-gen-get-devicelist-of <account you want to see the devicelist of>
+```

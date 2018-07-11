@@ -1,0 +1,30 @@
+#!/bin/bash
+
+CONFIG_DIR="$HOME/.config"
+CONFIG="$CONFIG_DIR/jabberdevlistscript"
+
+if ! [ -e "$CONFIG" ]; then
+  read -p "FROM is not set. Enter your Jabber ID: " FROM
+  mkdir -p $CONFIG_DIR
+  echo "FROM=$FROM" > $CONFIG
+  echo "If you want to change your FROM later, just edit or remove $CONFIG"
+else
+  source $CONFIG
+fi
+
+if [ -z "$1" ]; then
+  echo "$0: Missing argument."
+  echo "Usage: $0 [ Jabber ID of wished device list ]"
+  echo "Config file: $CONFIG"
+  exit 1
+fi
+
+echo "$CONFIG loaded."
+
+echo "
+<iq type='get' from='$FROM' to='$1' id='fetch1'>
+ <pubsub xmlns='http://jabber.org/protocol/pubsub'>
+  <items node='eu.siacs.conversations.axolotl.devicelist'/>
+ </pubsub>
+</iq>
+"
