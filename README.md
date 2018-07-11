@@ -26,5 +26,5 @@ If you don't see your device ID's you can use `omemo-gen-get-devicelist-of` to c
 it will be like
 
 ```console
-# ./omemo-gen-get-devicelist-of <account you want to see the devicelist of>
+# ./omemo-gen-get-devicelist-of [ account you want to see the devicelist of ]
 ```

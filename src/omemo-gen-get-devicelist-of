@@ -22,9 +22,15 @@ fi
 echo "$CONFIG loaded."
 
 echo "
+---COPY HERE---
+
+
 <iq type='get' from='$FROM' to='$1' id='fetch1'>
  <pubsub xmlns='http://jabber.org/protocol/pubsub'>
   <items node='eu.siacs.conversations.axolotl.devicelist'/>
  </pubsub>
 </iq>
+
+
+---END COPY HERE---
 "
