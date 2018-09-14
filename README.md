@@ -14,11 +14,11 @@ Requires qrencode and/or qr or even nothing.
 Example:
 # ./omemo-qrcode-gen [ Jabber ID ] [ Device ID ] "[ Fingerprint ]" [ filename.png or "qr" or "stdout" ] 
 # This will use qr to generate the QR code.
-./omemo-qrcode-gen bandie@example.com 9876543210 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 qr
+./omemo-qrcode-gen bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" qr
 # This will use qrencode to generate the QR code and will save it into foo.png
-./omemo-qrcode-gen bandie@example.com 9876543210 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 foo.png
+./omemo-qrcode-gen bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" foo.png
 # This will put the string into stdout
-./omemo-qrcode-gen bandie@example.com 9876543210 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 stdout
+./omemo-qrcode-gen bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" stdout
 ```
 
 If you don't see your device ID's you can use `omemo-gen-get-devicelist-of` to copy paste it into an XMPP console.
