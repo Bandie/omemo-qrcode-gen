@@ -13,11 +13,11 @@ function helpme() {
   echo -e "\nExample:"
   echo -e "# $0 [ Jabber ID ] [ Device ID ] \"[ Fingerprint ]\" [ filename.png or \"qr\" or \"stdout\" ] "
   echo "# This will use qr to generate the QR code."
-  echo -e "$0 bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" qr"
+  echo -e "$0 bandie@example.com 9876543210 \"12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12\" qr"
   echo "# This will use qrencode to generate the QR code and will save it into foo.png"
-  echo -e "$0 bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" foo.png"
+  echo -e "$0 bandie@example.com 9876543210 \"12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12\" foo.png"
   echo "# This will put the string into stdout"
-  echo -e "$0 bandie@example.com 9876543210 "12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12" stdout"
+  echo -e "$0 bandie@example.com 9876543210 \"12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12 12345678 ABCDEF12\" stdout"
 }
 
 function gen() {
