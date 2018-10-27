@@ -31,11 +31,11 @@ it will be like
 
 ### Pasting into the XMPP console in gajim
 
+1. Paste it
 ![Pasted request](/img/1.png)
-[Can't read a thing?](https://raw.githubusercontent.com/Bandie/omemo-qrcode-gen/master/img/1.png)
 
+2. Press the send button
 ![The send button](/img/2.png)
-[Can't read a thing?](https://raw.githubusercontent.com/Bandie/omemo-qrcode-gen/master/img/2.png)
 
+3. Gain the information
 ![The information you want to have](/img/3.png)
-[Can't read a thing?](https://raw.githubusercontent.com/Bandie/omemo-qrcode-gen/master/img/3.png)
